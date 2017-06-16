@@ -1,0 +1,1 @@
+### POC destinada à criação da uma API que realizará a execução de comandos vindos de um aplicativo/sistema web para a abertura ou fechamendo da garra de segurança da máquina.
