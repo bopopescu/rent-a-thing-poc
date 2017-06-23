@@ -10,4 +10,4 @@ class Client(models.Model):
     host_address = models.CharField(max_length=150, blank=False)
 
     class Meta:
-        ordering: = ('created',) 
+        ordering = ('created',) 
