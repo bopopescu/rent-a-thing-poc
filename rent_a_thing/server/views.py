@@ -20,7 +20,7 @@ class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
 
     @csrf_exempt
-    def list(request):
+    def list(self, request):
         if request.method == 'GET':
             clients = Client.objects.all()
             serializer = ClientSerializer(clients, many=True)
