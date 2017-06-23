@@ -21,6 +21,7 @@ from server import views
 server_router = routers.DefaultRouter()
 server_router.register(r'users', views.UserViewSet)
 server_router.register(r'groups', views.GroupViewSet)
+server_router.register(r'clients', views.ClientViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

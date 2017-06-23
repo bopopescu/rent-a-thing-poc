@@ -25,7 +25,7 @@ SECRET_KEY = 'u6r96ydu=ld5u4t_*vyie$6a(4l8aa8%ejoe1d66&b50cum-8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.111']
+ALLOWED_HOSTS = ['192.168.0.111', 'tcc-jec']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'server.apps.ServerConfig',
 ]
 
 REST_FRAMEWORK = {

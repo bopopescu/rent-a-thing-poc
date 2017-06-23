@@ -12,7 +12,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('url', 'name')
 
-class ClientSerializer(serializers.HyperlinkedModelSerializer):
+class ClientSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     description = serializers.CharField(max_length=150, required=True)
     address = serializers.CharField(max_length=500, required=True)
