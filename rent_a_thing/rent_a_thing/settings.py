@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'server.apps.ServerConfig',
+    'client.apps.ClientConfig',
 ]
 
 REST_FRAMEWORK = {
@@ -126,6 +127,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+#LOGIN_REDIRECT_URL = ''
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
