@@ -6,7 +6,7 @@ from client.serializers import ClientConfigSerializer
 # Create your views here.
 
 class CommandViewSet(viewsets.ViewSet):
-    #queryset = ClientConfig.objects.all()
-    #serializer_class = ClientConfigSerializer
+    queryset = ClientConfig.objects.all()
+    serializer_class = ClientConfigSerializer
 
 
