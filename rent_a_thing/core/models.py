@@ -16,8 +16,7 @@ class Rental (models.Model):
     tenant_user = models.OneToOneField(User, on_delete=models.PROTECT)
     rented_object = models.OneToOneField(RentalObject, on_delete=models.PROTECT)
     is_confirmed = models.BooleanField(default=True)
-    rental_station = models.OneToOneField(Client, on_delete=models.PROTECT)
-    return_station = models.OneToOneField(Client, on_delete=models.PROTECT)
+    rental_station = models.OneToOneField(Client, on_delete=models.PROTECT, related_name='rental_client_station')
+    return_station = models.OneToOneField(Client, on_delete=models.PROTECT, related_name='return_client_station')
     rental_date = models.DateTimeField()
     return_date = models.DateTimeField()
-    
