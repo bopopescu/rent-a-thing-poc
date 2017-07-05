@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'server.apps.ServerConfig',
     'client.apps.ClientConfig',
+    'core.apps.CoreConfig',
 ]
 
 REST_FRAMEWORK = {
