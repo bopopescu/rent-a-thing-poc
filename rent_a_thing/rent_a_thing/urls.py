@@ -19,9 +19,11 @@ from rest_framework import routers
 from server import views as server_views
 from client import views as client_views
 
+core_router = routers.DefaultRouter()
+core_router.register(r'users', server_views.UserViewSet)
+core_router.register(r'groups', server_views.GroupViewSet)
+
 server_router = routers.DefaultRouter()
-server_router.register(r'users', server_views.UserViewSet)
-server_router.register(r'groups', server_views.GroupViewSet)
 server_router.register(r'clients', server_views.ClientViewSet)
 
 client_router = routers.DefaultRouter()
@@ -31,5 +33,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^server/api/', include(server_router.urls)),
     url(r'^client/api/', include(client_router.urls)),
+    url(r'^core/api/', include(core_router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
