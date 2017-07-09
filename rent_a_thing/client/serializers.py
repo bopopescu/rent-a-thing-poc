@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from client.models import ClientConfig
+from core.serializers import UserSerializer, RentalObjectSerializer
 
 class ClientConfigSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -14,3 +15,8 @@ class ClientConfigSerializer(serializers.Serializer):
 
         instance.save()
         return instance
+
+class ClientReservationSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    tenant_user = UserSerializer()
+    rental_object = RentalObjectSerializer()
