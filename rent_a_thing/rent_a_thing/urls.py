@@ -18,10 +18,11 @@ from django.contrib import admin
 from rest_framework import routers
 from server import views as server_views
 from client import views as client_views
+from core import views as core_views
 
 core_router = routers.DefaultRouter()
-core_router.register(r'users', server_views.UserViewSet)
-core_router.register(r'groups', server_views.GroupViewSet)
+core_router.register(r'users', core_views.UserViewSet)
+core_router.register(r'groups', core_views.GroupViewSet)
 
 server_router = routers.DefaultRouter()
 server_router.register(r'clients', server_views.ClientViewSet)
