@@ -28,7 +28,7 @@ server_router = routers.DefaultRouter()
 server_router.register(r'clients', server_views.ClientViewSet)
 
 client_router = routers.DefaultRouter()
-client_router.register(r'command', client_views.CommandViewSet)
+client_router.register(r'command', client_views.ClientReservationViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
