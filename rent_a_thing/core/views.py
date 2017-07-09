@@ -1,3 +1,4 @@
+from rest_framework import viewsets
 from django.shortcuts import render
 from core.serializers import UserSerializer, GroupSerializer
 from django.contrib.auth.models import User, Group
