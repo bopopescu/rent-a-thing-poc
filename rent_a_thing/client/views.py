@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from django.shortcuts import render
 from core.models import Rental
-from client.serializers import ClientConfigSerializer
+from client.serializers import ClientConfigSerializer, ClientReservationSerializer
 from client.models import ClientReservation
 
 # Create your views here.
