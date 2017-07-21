@@ -16,7 +16,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class RentalObjectSerializer(serializers.Serializer):
     id = serializers.UUIDField(format='hex_verbose')
-    current_tenant_user = UserSerializer(many=False)
+    current_tenant = UserSerializer(many=False)
 
 class RentalSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
