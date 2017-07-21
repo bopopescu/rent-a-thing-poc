@@ -33,7 +33,7 @@ client_router = routers.DefaultRouter()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^server/api/', include(server_router.urls)),
-    url(r'^api/client/$', client_views.ClientReservationList.as_view()),
+    url(r'^api/clientreservation/$', client_views.ClientReservationList.as_view()),
     #url(r'^client/api/', include(client_router.urls)),
     url(r'^core/api/', include(core_router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

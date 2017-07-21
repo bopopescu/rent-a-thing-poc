@@ -12,3 +12,6 @@ from rest_framework import status
 class ClientReservationList(generics.ListCreateAPIView):
     queryset = ClientReservation.objects.all()
     serializer_class = ClientReservationSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
