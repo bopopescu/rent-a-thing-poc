@@ -25,7 +25,7 @@ SECRET_KEY = 'u6r96ydu=ld5u4t_*vyie$6a(4l8aa8%ejoe1d66&b50cum-8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.111', 'tcc-jec']
+ALLOWED_HOSTS = ['192.168.0.111', 'tcc-jec', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -90,7 +90,8 @@ DATABASES = {
         'NAME': 'rent_a_thing',
 	'USER': 'jec',
 	'PASSWORD': 'jec@2017',
-	'HOST': 'localhost',
+    'HOST': '35.185.86.40',
+	#'HOST': 'localhost',
 	'PORT': '3306',
     }
 }

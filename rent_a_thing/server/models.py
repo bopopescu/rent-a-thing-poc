@@ -12,4 +12,4 @@ class Client(models.Model):
     identifier = models.UUIDField(default=uuid.uuid4, editable=True, blank=False)
 
     class Meta:
-        ordering = ('created',) 
+        ordering = ('created',)
