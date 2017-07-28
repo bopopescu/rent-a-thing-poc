@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'server.apps.ServerConfig',
     'client.apps.ClientConfig',
     'core.apps.CoreConfig',
+    'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
@@ -87,7 +88,8 @@ DATABASES = {
         'NAME': 'rent_a_thing',
         'USER': 'jec',
         'PASSWORD': 'jec@2017',
-        'HOST': '192.168.0.104',
+        'HOST': '192.168.87.10',
+        # 'HOST': '192.168.0.104',
         # 'HOST': 'localhost',
         'PORT': '3306',
     }
