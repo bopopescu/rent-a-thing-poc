@@ -15,7 +15,6 @@ import os
 # 0 Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'u6r96ydu=ld5u4t_*vyie$6a(4l8aa8%ejoe1d66&b50cum-8k'
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.111', 'tcc-jec', 'localhost', '127.0.0.1']
-
 
 # Application definition
 
@@ -80,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'rent_a_thing.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -88,14 +85,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rent_a_thing',
-	'USER': 'jec',
-	'PASSWORD': 'jec@2017',
-    'HOST': '35.185.86.40',
-	#'HOST': 'localhost',
-	'PORT': '3306',
+        'USER': 'jec',
+        'PASSWORD': 'jec@2017',
+        'HOST': '192.168.0.104',
+        # 'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -115,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -129,7 +124,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-#LOGIN_REDIRECT_URL = ''
+# LOGIN_REDIRECT_URL = ''
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

@@ -6,12 +6,10 @@ from client.models import ClientReservation
 from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 
 # Create your views here.
 
-class ClientReservationList(generics.ListCreateAPIView):
+class ClientReservationViewSet(viewsets.ModelViewSet):
     queryset = ClientReservation.objects.all()
     serializer_class = ClientReservationSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)

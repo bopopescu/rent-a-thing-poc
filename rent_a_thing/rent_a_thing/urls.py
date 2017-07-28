@@ -18,6 +18,7 @@ from django.contrib import admin
 from rest_framework import routers
 from server import views as server_views
 from client import views as client_views
+#from client.routes import Routes as client_routes
 from core import views as core_views
 
 core_router = routers.DefaultRouter()
@@ -28,13 +29,18 @@ server_router = routers.DefaultRouter()
 server_router.register(r'clients', server_views.ClientViewSet)
 
 client_router = routers.DefaultRouter()
-#client_router.register(r'reservations', client_views.ClientReservationViewSet)
+client_router.register(r'reservations', client_views.ClientReservationViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^server/api/', include(server_router.urls)),
-    url(r'^api/clientreservation/$', client_views.ClientReservationList.as_view()),
-    #url(r'^client/api/', include(client_router.urls)),
     url(r'^core/api/', include(core_router.urls)),
+    url(r'^client/api/', include(client_router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+
+#url(r'^api/clientreservation/$', client_views.ClientReservationList.as_view()),
+    #url(r'^client/api/', include(client_router.urls)),
+    
+
+# urlpatterns += client_routes.getRoutes()
