@@ -24,7 +24,7 @@ SECRET_KEY = 'u6r96ydu=ld5u4t_*vyie$6a(4l8aa8%ejoe1d66&b50cum-8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.111', 'tcc-jec', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.107', 'tcc-jec', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -43,8 +43,11 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAdminUser',
+    #'DEFAULT_PERMISSION_CLASSES': [
+    #    'rest_framework.permissions.IsAdminUser',
+    #],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
     ],
     'PAGE_SIZE': 10
 }
@@ -88,8 +91,8 @@ DATABASES = {
         'NAME': 'rent_a_thing',
         'USER': 'jec',
         'PASSWORD': 'jec@2017',
-        'HOST': '192.168.87.10',
-        # 'HOST': '192.168.0.104',
+        # 'HOST': '192.168.87.10',
+        'HOST': '192.168.0.104',
         # 'HOST': 'localhost',
         'PORT': '3306',
     }
