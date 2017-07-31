@@ -13,3 +13,4 @@ from rest_framework import viewsets
 class ClientReservationViewSet(viewsets.ModelViewSet):
     queryset = ClientReservation.objects.all()
     serializer_class = ClientReservationSerializer
+    pagination_class = None

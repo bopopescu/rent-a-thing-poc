@@ -12,6 +12,7 @@ from rest_framework.parsers import JSONParser
 class ClientViewSet(viewsets.ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
+    pagination_class = None
 
     @csrf_exempt
     def list_all(self, request):
