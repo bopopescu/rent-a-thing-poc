@@ -8,7 +8,7 @@ class RentalObject (models.Model):
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4)
     created = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
-    current_tenant = models.OneToOneField(User, on_delete=models.PROTECT)
+    current_tenant = models.OneToOneField(User, on_delete=models.PROTECT, blank=True, null=True)
     
 class Rental (models.Model):
     created = models.DateTimeField(auto_now_add=True)

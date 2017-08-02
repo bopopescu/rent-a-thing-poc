@@ -24,7 +24,7 @@ SECRET_KEY = 'u6r96ydu=ld5u4t_*vyie$6a(4l8aa8%ejoe1d66&b50cum-8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.107', 'tcc-jec', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.107', 'tcc-jec', 'localhost', '127.0.0.1', 'lvh.me']
 
 # Application definition
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-       'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
