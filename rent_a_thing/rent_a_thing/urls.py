@@ -15,7 +15,6 @@ server_router = routers.DefaultRouter()
 server_router.register(r'clients', server_views.ClientViewSet)
 
 client_router = routers.DefaultRouter()
-client_router.register(r'reservations', client_views.ClientReservationViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

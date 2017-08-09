@@ -11,8 +11,3 @@ class ClientConfig(models.Model):
 
     class Meta:
         ordering = ('created',)
-
-class ClientReservation(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    tenant_user = models.OneToOneField(User, on_delete=models.PROTECT)
-    rental_object = models.OneToOneField(RentalObject, on_delete=models.PROTECT)

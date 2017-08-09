@@ -50,6 +50,7 @@ class ClientSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+
 class RentalSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     tenant_user = UserSerializer(many=False)

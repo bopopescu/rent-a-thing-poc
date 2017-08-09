@@ -15,8 +15,3 @@ class ClientConfigSerializer(serializers.Serializer):
 
         instance.save()
         return instance
-
-class ClientReservationSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    tenant_user = UserSerializer()
-    rental_object = RentalObjectSerializer()
