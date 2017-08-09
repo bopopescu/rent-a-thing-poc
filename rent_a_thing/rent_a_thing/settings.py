@@ -94,7 +94,7 @@ DATABASES = {
         'USER': 'jec',
         'PASSWORD': 'jec@2017',
         # 'HOST': '192.168.87.10',
-        'HOST': '192.168.0.104',
+        'HOST': '192.168.0.102',
         # 'HOST': 'localhost',
         'PORT': '3306',
     }

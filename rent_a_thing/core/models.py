@@ -1,15 +1,27 @@
 import uuid
 from django.contrib.auth.models import User
 from django.db import models
-from server.models import Client
 # Create your models here.
+
+class Client(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    last_update = models.DateTimeField(auto_now=True)
+    description = models.CharField(max_length=150, blank=False)
+    address = models.CharField(max_length=500, blank=False)
+    host_address = models.CharField(max_length=150, blank=False)
+    identifier = models.UUIDField(default=uuid.uuid4, editable=True, blank=False)
+
+    class Meta:
+        ordering = ('created',)
 
 class RentalObject (models.Model):
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4)
     created = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
     current_tenant = models.OneToOneField(User, on_delete=models.PROTECT, blank=True, null=True)
-    
+    current_station = models.ForeignKey(Client, blank=True, null=True)
+
+
 class Rental (models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
