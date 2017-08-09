@@ -2,3 +2,4 @@
 *.pyc
 rent_a_thing/.vscode/
 .idea/
+*.orig
