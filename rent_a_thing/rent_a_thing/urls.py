@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^core/api/', include(core_router.urls)),
     url(r'^client/api/', include(client_router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^account/login', token_views.obtain_auth_token)
+    url(r'^account/login/', token_views.obtain_auth_token)
 ]
 
 #url(r'^api/clientreservation/$', client_views.ClientReservationList.as_view()),

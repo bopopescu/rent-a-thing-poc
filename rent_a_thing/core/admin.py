@@ -2,8 +2,8 @@ from django.contrib import admin
 from core.models import RentalObject, Rental, Client
 
 class RentalObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'current_tenant', 'last_update', 'created')
-    fields = ['id', 'current_tenant']
+    list_display = ('id', 'current_tenant', 'current_station', 'last_update', 'created')
+    fields = ['id', 'current_tenant', 'current_station']
     readonly_fields = ['id']
     ordering = ('last_update', '-created',)
 

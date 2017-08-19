@@ -38,6 +38,7 @@ class ClientSerializer(serializers.Serializer):
     description = serializers.CharField(max_length=150, required=True)
     address = serializers.CharField(max_length=500, required=True)
     host_address = serializers.CharField(max_length=150, required=True)
+    rental_objects = RentalObjectSerializer(many=True)
 
     def create(self, validated_data):
         return Client.objects.create(**validated_data)

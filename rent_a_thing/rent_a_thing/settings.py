@@ -24,7 +24,7 @@ SECRET_KEY = 'u6r96ydu=ld5u4t_*vyie$6a(4l8aa8%ejoe1d66&b50cum-8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.107', 'tcc-jec', 'localhost', '127.0.0.1', 'lvh.me']
+ALLOWED_HOSTS = ['192.168.0.108', 'tcc-jec', 'localhost', '127.0.0.1', 'lvh.me', '186.228.126.103']
 
 # Application definition
 
@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'server.apps.ServerConfig',
     'client.apps.ClientConfig',
@@ -62,7 +63,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'rent_a_thing.urls'
 
@@ -93,9 +97,7 @@ DATABASES = {
         'NAME': 'rent_a_thing',
         'USER': 'jec',
         'PASSWORD': 'jec@2017',
-        # 'HOST': '192.168.0.104',
-        'HOST': '192.168.0.102',
-        # 'HOST': 'localhost',
+        'HOST': '192.168.0.100',
         'PORT': '3306',
     }
 }
