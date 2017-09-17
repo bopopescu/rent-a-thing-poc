@@ -1,15 +1,26 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from core.models import Rental, RentalObject, Client
+from core.models import Rental, RentalObject, Client, Profile, Price
 
+
+class PriceSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Price
+        fields = ('value',)
+
+class ProfileSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('cpf','address1','address2','zipcode')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     
     password = serializers.CharField(style={'input_type': 'password'}, write_only=True)
+    profile = ProfileSerializer(many=False)
 
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'password')
+        fields = ('url', 'username', 'email', 'password', 'profile', 'first_name', 'last_name')
         write_only_fields = ('password',)
         read_only_fields = ('id',)
 

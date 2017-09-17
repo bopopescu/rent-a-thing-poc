@@ -1,5 +1,7 @@
 from django.contrib import admin
-from core.models import RentalObject, Rental, Client
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from core.models import RentalObject, Rental, Client, Profile
 
 class RentalObjectAdmin(admin.ModelAdmin):
     list_display = ('id', 'current_tenant', 'current_station', 'last_update', 'created')
@@ -18,6 +20,17 @@ class ClientAdmin(admin.ModelAdmin):
     fields = ('description', 'address', 'host_address')
     ordering = ('last_update', '-created',)
 
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'profile'
+
+class UserAdmin(BaseUserAdmin):
+    readonly_fields = ['last_login', 'date_joined']
+    inlines = [ProfileInline, ]
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Client, ClientAdmin)
 admin.site.register(RentalObject, RentalObjectAdmin)
 admin.site.register(Rental, RentalAdmin)

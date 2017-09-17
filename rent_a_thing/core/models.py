@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 from django.db import models
 # Create your models here.
 
+class Price(models.Model):
+    value = models.DecimalField(null=False, blank=False, decimal_places=2, max_digits=20)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cpf = models.CharField(null=False, blank=False, max_length=14)
+    address1 = models.CharField(default='', blank=True, max_length=150)
+    address2 = models.CharField(default='', blank=True, max_length=150)
+    zipcode = models.CharField(default='', blank=True, max_length=9)
+
 class Client(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
@@ -50,3 +60,4 @@ class Transaction (models.Model):
     price_per_credit = models.DecimalField(max_digits=24, decimal_places=2)
     is_completed = models.BooleanField(default=False)
     user = models.ForeignKey(User)
+    transaction_code = models.CharField(unique=True, max_length=36, null=True)
