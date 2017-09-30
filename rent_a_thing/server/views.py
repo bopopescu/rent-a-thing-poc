@@ -1,12 +1,11 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from core.serializers import ClientSerializer
-from core.models import Client, Transaction, Wallet
-from django.http import HttpResponse, JsonResponse
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+from rest_framework import viewsets, status, mixins
+from rest_framework.generics import UpdateAPIView
+from rest_framework.response import Response
 
+from core.models import Client, Transaction, Wallet, RentalObject, Rental
+from core.serializers import ClientSerializer, RentalObjectSerializer, RentalSerializer
 from server.serializers import TransactionSerializer, WalletSerializer
 
 
@@ -31,3 +30,24 @@ class WalletViewSet(viewsets.ModelViewSet):
     queryset = Wallet.objects.all()
     serializer_class = WalletSerializer
     pagination_class = None
+
+class RentalObjectViewSet(UpdateAPIView, mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, viewsets.GenericViewSet):
+    queryset = RentalObject.objects.all()
+    serializer_class = RentalObjectSerializer
+    pagination_class = None
+
+class RentalViewSet(viewsets.ModelViewSet):
+    queryset = Rental.objects.all()
+    serializer_class = RentalSerializer
+    pagination_class = None
+
+    def retrieve(self, request, *args, **kwargs):
+        queryset = Rental.objects.all()
+        filter = queryset.filter(tenant_user = kwargs['pk'])
+
+        if filter.count() > 0:
+            rental = filter[0]
+            serializer = RentalSerializer(rental, context={'request': request})
+            return Response(serializer.data)
+
+        return Response(None, status=status.HTTP_404_NOT_FOUND)

@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from core.models import Rental, RentalObject, Client, Profile, Price
@@ -42,7 +44,38 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class RentalObjectSerializer(serializers.Serializer):
     id = serializers.UUIDField(format='hex_verbose')
-    current_tenant = UserSerializer(many=False)
+    station_id = serializers.IntegerField()
+    is_return = serializers.BooleanField()
+    current_tenant = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+    )
+
+    def update(self, instance, validated_data):
+
+        client = Client.objects.get(id=validated_data['station_id'])
+        rental_object = RentalObject.objects.get(id=validated_data['id'])
+        is_return = validated_data['is_return']
+
+
+        if is_return == False:
+            instance.current_station = None
+            instance.current_tenant = validated_data['current_tenant']
+
+            Rental.objects.create(tenant_user=validated_data['current_tenant'],
+                                  rental_date = datetime.datetime.now(),
+                                  rental_station= client,
+                                  rented_object=rental_object)
+        else:
+            instance.current_tenant = None
+            instance.current_station = client
+
+            Rental.objects.filter(tenant_user=validated_data['current_tenant']).delete()
+
+        instance.save()
+
+        #TODO: Plugar chamada ao stepper.
+
+        return instance
 
 class ClientSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -62,17 +95,15 @@ class ClientSerializer(serializers.Serializer):
         instance.save()
         return instance
 
-
 class RentalSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     tenant_user = UserSerializer(many=False)
     rented_object = RentalObjectSerializer(many=False)
-    is_confirmed = serializers.BooleanField()
+    #is_confirmed = serializers.BooleanField()
     rental_station = ClientSerializer(many=False)
     return_station = ClientSerializer(many=False)
     rental_date = serializers.DateTimeField()
     return_date = serializers.DateTimeField()
-
 
     def create(self, validated_data):
         return Rental.objects.create(**validated_data)

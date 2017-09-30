@@ -14,6 +14,8 @@ server_router.register(r'clients', server_views.ClientViewSet)
 server_router.register(r'prices', core_views.PriceViewSet)
 server_router.register(r'transactions', server_views.TransactionViewSet)
 server_router.register(r'wallets', server_views.WalletViewSet)
+server_router.register(r'rental_objects', server_views.RentalObjectViewSet)
+server_router.register(r'rentals', server_views.RentalViewSet)
 
 client_router = routers.DefaultRouter()
 

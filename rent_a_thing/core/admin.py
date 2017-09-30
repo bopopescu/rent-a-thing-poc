@@ -10,9 +10,9 @@ class RentalObjectAdmin(admin.ModelAdmin):
     ordering = ('last_update', '-created',)
 
 class RentalAdmin(admin.ModelAdmin):
-    list_display = ('id', 'tenant_user', 'rented_object', 'is_confirmed', 'rental_station')
-    fields = ['id', 'tenant_user', 'rented_object', 'is_confirmed', 'rental_station', 'return_station', 'last_update', 'created']
-    readonly_fields = ['id', 'tenant_user', 'rented_object', 'is_confirmed', 'rental_station', 'return_station', 'last_update', 'created']
+    list_display = ('id', 'tenant_user', 'rented_object', 'rental_station')
+    fields = ['id', 'tenant_user', 'rented_object', 'rental_station', 'return_station', 'last_update', 'created']
+    readonly_fields = ['id', 'tenant_user', 'rented_object', 'rental_station', 'return_station', 'last_update', 'created']
     ordering = ('last_update', '-created')
 
 class ClientAdmin(admin.ModelAdmin):
