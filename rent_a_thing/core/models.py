@@ -35,6 +35,7 @@ class RentalObject (models.Model):
     current_station = models.ForeignKey(Client, related_name='rental_objects', blank=True, null=True)
     station_id = models.IntegerField(blank=True, null=True)
     is_return = models.NullBooleanField(blank=True, null=True)
+    rental_cost = models.IntegerField(blank=True, null=True)
 
 
 class Rental (models.Model):

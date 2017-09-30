@@ -2,7 +2,7 @@ import datetime
 
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from core.models import Rental, RentalObject, Client, Profile, Price
+from core.models import Rental, RentalObject, Client, Profile, Price, Wallet
 
 
 class PriceSerializer(serializers.HyperlinkedModelSerializer):
@@ -46,6 +46,7 @@ class RentalObjectSerializer(serializers.Serializer):
     id = serializers.UUIDField(format='hex_verbose')
     station_id = serializers.IntegerField()
     is_return = serializers.BooleanField()
+    rental_cost = serializers.IntegerField()
     current_tenant = serializers.HiddenField(
         default=serializers.CurrentUserDefault()
     )
@@ -68,6 +69,10 @@ class RentalObjectSerializer(serializers.Serializer):
         else:
             instance.current_tenant = None
             instance.current_station = client
+
+            wallet = Wallet.objects.get(id=validated_data['current_tenant'])
+            wallet.balance -= validated_data['rental_cost']
+            wallet.save()
 
             Rental.objects.filter(tenant_user=validated_data['current_tenant']).delete()
 
